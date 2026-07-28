@@ -1,2 +1,2 @@
-def buscar_aluno(id: int):
-    return {"mensagem": f"Aluno {id}"}
+def faltas_aluno():
+    return
