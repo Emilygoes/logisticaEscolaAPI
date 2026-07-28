@@ -1,7 +1,7 @@
 class Professor:
 
-    def __init__(self, id_professor, primeiro_nome, sobrenome, titulacao, cpf, telefone):
-        self.id_professor = id_professor
+    def __init__(self, CPF, primeiro_nome, sobrenome, titulacao, cpf, telefone):
+        self.CPF = CPF
         self.primeiro_nome = primeiro_nome
         self.sobrenome = sobrenome
         self.titulacao = titulacao
