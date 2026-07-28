@@ -1,7 +1,7 @@
 class Aluno:
 
-    def __init__(self, id_aluno, nome, sobrenome, nascimento, cpf, telefone):
-        self.id_aluno = id_aluno
+    def __init__(self, CPF, nome, sobrenome, nascimento, cpf, telefone):
+        self.CPF = CPF
         self.nome = nome
         self.sobrenome = sobrenome
         self.nascimento = nascimento
