@@ -33,3 +33,23 @@ Class matricula:
         self.data_matricula = data_matricula
         self.forma_ingresso = forma_ingresso
         self.status = status
+
+class Grade:
+
+    def __init__(self, id_grade, dia_semana, horario_inicio, hora_fim, sala):
+        self.id_grade = id_grade
+        self.dia_semana = dia_semana
+        self.horario_inicio = horario_inicio
+        self.hora_fim = horario_fim
+        self.sala = sala
+
+class Professor:
+
+    def __init__(self, id_professor, primeiro_nome, sobrenome, titulacao, cpf, telefone):
+        self.id_professor = id_professor
+        self.primeiro_nome = primeiro_nome
+        self.sobrenome = sobrenome
+        self.titulacao = titulacao
+        self.cpf = cpf
+        self.telefone = telefone
+        
