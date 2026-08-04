@@ -5,7 +5,7 @@ app = FastAPI()
 @app.get("/aluno")
 def aluno():
     return {
-        "id_aluno": "1",
+        "cpf": "1",
         "primeiro_nome": "João",
         "sobrenome": "Silva",
         "data_nascimento": "15/05/2008",
@@ -16,7 +16,7 @@ def aluno():
 @app.get("/professor")
 def professor():
     return {
-        "id_professor": "1",
+        "cpf": "1",
         "primeiro_nome": "Carlos",
         "sobrenome": "Souza",
         "titulacao": "Mestre",
@@ -27,7 +27,7 @@ def professor():
 @app.get("/turma")
 def turma():
     return {
-        "id_turma": "1",
+        "numero_turma": "1",
         "codigo_turma": "INF301",
         "ano_letivo": "2026",
         "turno": "Matutino",
@@ -37,7 +37,7 @@ def turma():
 @app.get("/matricula")
 def matricula():
     return {
-        "id_matricula": "1",
+        "cod_matricula": "1",
         "data_matricula": "10/02/2026",
         "forma_ingresso": "Vestibular",
         "status": "Ativa"
@@ -46,7 +46,7 @@ def matricula():
 @app.get("/grade")
 def grade():
     return {
-        "id_grade": "1",
+        cod_grade": "1",
         "dia_semana": "Segunda-feira",
         "hora_inicio": "07:30",
         "hora_fim": "08:20",
@@ -57,9 +57,10 @@ def grade():
 @app.get("/disciplina")
 def disciplina():
     return {
-        "id_disciplina": "1",
+        "nome_disciplina": "1",
         "nome_disciplina": "Banco de Dados",
         "codigo": "BD101",
         "carga_horaria": "80",
         "ementa": "Modelagem de Banco de Dados"
     }
+
