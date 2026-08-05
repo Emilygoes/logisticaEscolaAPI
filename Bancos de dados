@@ -1,0 +1,66 @@
+CREATE TABLE aluno (
+    CPF CHAR(11) PRIMARY KEY,
+    nome_primeiro VARCHAR(50) NOT NULL,
+    nome_sobrenome VARCHAR(100) NOT NULL,
+    data_nascimento DATE,
+    telefone VARCHAR(15)
+);
+
+CREATE TABLE turma (
+    numero_turma INT PRIMARY KEY,
+    codigo_turma VARCHAR(20) NOT NULL,
+    ano_letivo INT NOT NULL,
+    turno VARCHAR(20),
+    capacidade INT
+);
+
+CREATE TABLE disciplina (
+    codigo_disciplina VARCHAR(20) PRIMARY KEY,
+    nome_disciplina VARCHAR(100) NOT NULL,
+    codigo VARCHAR(20),
+    carga_horaria INT,
+    ementa TEXT
+);
+
+CREATE TABLE professor (
+    CPF CHAR(11) PRIMARY KEY,
+    nome_primeiro VARCHAR(50) NOT NULL,
+    nome_sobrenome VARCHAR(100) NOT NULL,
+    titulacao VARCHAR(100),
+    telefone VARCHAR(15)
+);
+
+CREATE TABLE matricula (
+    n_matricula INT PRIMARY KEY,
+    CPF CHAR(11),
+    numero_turma INT,
+    data_matricula DATE,
+    status VARCHAR(30),
+    forma_ingresso VARCHAR(50),
+
+    FOREIGN KEY (CPF)
+        REFERENCES aluno(CPF),
+
+    FOREIGN KEY (numero_turma)
+        REFERENCES turma(numero_turma)
+);
+
+CREATE TABLE grade_horaria (
+    id_grade INT PRIMARY KEY AUTO_INCREMENT,
+    numero_turma INT,
+    codigo_disciplina VARCHAR(20),
+    CPF_professor CHAR(11),
+    dia_semana VARCHAR(20),
+    hora_inicio TIME,
+    hora_fim TIME,
+    sala VARCHAR(20),
+
+    FOREIGN KEY (numero_turma)
+        REFERENCES turma(numero_turma),
+
+    FOREIGN KEY (codigo_disciplina)
+        REFERENCES disciplina(codigo_disciplina),
+
+    FOREIGN KEY (CPF_professor)
+        REFERENCES professor(CPF)
+);
