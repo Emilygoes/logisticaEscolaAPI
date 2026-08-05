@@ -1,9 +1,11 @@
-class Professor:
+from sqlalchemy import Column, Integer, String
+from database import Base
 
-    def __init__(self, CPF, primeiro_nome, sobrenome, titulacao, cpf, telefone):
-        self.CPF = CPF
-        self.primeiro_nome = primeiro_nome
-        self.sobrenome = sobrenome
-        self.titulacao = titulacao
-        self.cpf = cpf
-        self.telefone = telefone
+class Professor(Base):
+
+    __tablename__ = "professor"
+    cpf = Column(integer, primary_key = True, index = True)
+    nome_primeiro = Column (String(50), nullable = False)
+    nome_sobrenome = Column(String(100), nullable = False)
+    titulacao = Column(String, nullable = False)
+    telefone = Column (Integer(15), nullable = False)

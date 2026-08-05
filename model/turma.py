@@ -1,8 +1,11 @@
-class Turma:
+from sqlalchemy import Column, Integer, String
+from database import Base
 
-    def __init__(self, numero_turma, codigo_turma, ano_letivo, turno, capacidade):
-        self.numero_turma = numero_turma
-        self.codigo_turma = codigo_turma
-        self.ano_letivo = ano_letivo
-        self.turno = turno
-        self.capacidade = capacidade
+class Turma(Base):
+
+    __tablename__ = "turma"
+    numero_turma = Column(Integer, primary_key = True, index = True)
+    codigo_turma = Column (String(50), nullable = False)
+    ano_letivo = Column(Integer, nullable = False)
+    turno = Column(String, nullable = False)
+    capacidade = Column (Integer, nullable = False)
