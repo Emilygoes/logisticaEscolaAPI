@@ -22,10 +22,80 @@
             </tr></thead>
     </table>
 
+    <h1> professor </h1>
+    <table id="tabela-professor">
+        <thead><tr>
+            <th>cpf</th>
+            <th>nome</th>
+            <th>sobrenome</th>
+            <th>titulacao</th>
+            <th>telefone</th>
+            </tr></thead>
+    </table>
+
+    <h1> agendamento </h1>
+    <table id="tabela-agendamento">
+        <thead><tr>
+            <th>turma</th>
+            <th>turno</th>
+            <th>materias</th>
+            <th>agenda</th>
+            </tr></thead>
+    </table>
+
+    <h1> turmas </h1>
+    <table id="tabela-turmas">
+        <thead><tr>
+            <th>numero_turma</th>
+            <th>codigo_turma</th>
+            <th>ano_letivo</th>
+            <th>turno</th>
+            <th>capacidade</th>
+            </tr></thead>
+    </table>
+
+    <h1> alunos </h1>
+    <table id="tabela-grade">
+        <thead><tr>
+            <th>id_grade</th>
+            <th>numero_turma</th>
+            <th>codigo_turma</th>
+            <th>cpf_professor</th>
+            <th>dia_semana</th>
+            <th>hora_inicio</th>
+            <th>hora_fim</th>
+            <th>sala</th>
+            </tr></thead>
+    </table>
+
+    <h1> disciplina </h1>
+    <table id="tabela-disciplina">
+        <thead><tr>
+            <th>codigo_disciplina</th>
+            <th>nome_disciplina</th>
+            <th>codigo</th>
+            <th>carga_horaria</th>
+            <th>ementa</th>
+            </tr></thead>
+    </table>
+
+    <h1> matricula </h1>
+    <table id="tabela-matricula">
+        <thead><tr>
+            <th>n_matricula</th>
+            <th>cpf</th>
+            <th>numero_turma</th>
+            <th>status_matricula</th>
+            <th>forma_ingresso</th>
+            </tr></thead>
+    </table>
+
+
+
     <script>
         const API_URL = "http://127.0.0.1:8000"
 
-        async function carregaraluno(){
+        async function carregar_Aluno(){
             const resposta = await fetch(`${API_URL}/alunos`);
             const dados = await resposta.json();
 
@@ -34,8 +104,6 @@
 
             for (let i =0; i < dados.length; i++) {
                 const aluno = dados[i];
-            
-
 
                 corpo.insertAdjacentHTML("beforeend",
                  `<tr> 
@@ -47,7 +115,148 @@
                     </tr>` ); 
         }
     }
-        carregaraluno()
+
+     
+
+        async function carregar_Grade(){
+            const resposta = await fetch(`${API_URL}/grade`);
+            const dados = await resposta.json();
+            
+            const corpo = document.querySelector("#tabela-grade")
+            corpo.innerHTML = "";
+
+     
+          for (let i =0; i < dados.length; i++) {
+
+                const grade = dados[i];            
+            
+
+                corpo.insertAdjacentHTML("beforeend",
+                 `<tr>
+                    <td>${grade.id_grade}</td>
+                    <td>${grade.numero_grade}</td> 
+                    <td>${grade.codigo_disciplina}</td>
+                    <td>${grade.cpf_professor}}</td>
+                    <td>${grade.dia_semana}</td>
+                    <td>${grade.hora_inicio}</td>
+                    <td>${grade.hora_fim}</td>
+                    <td>${grade.sala}</td>
+                    </tr>` ); 
+        }
+    }
+                async function carregar_Agendamento(){
+            const resposta = await fetch(`${API_URL}/agendamento`);
+            const dados = await resposta.json();
+
+            const corpo = document.querySelector("#tabela-agendamento")
+            corpo.innerHTML = "";
+
+            for (let i =0; i < dados.length; i++) {
+                const agendamento = dados[i];
+            
+
+
+                corpo.insertAdjacentHTML("beforeend",
+                 `<tr> 
+                    <td>${agendamento.turma}</td>                  
+                    <td>${agendamento.turno}</td> 
+                    <td>${agendamento.materiais}</td>
+                    <td>${agendamento.agenda}</td> 
+                    
+                    </tr>` ); 
+        }
+    }
+
+        async function carregar_Professor(){
+            const resposta = await fetch(`${API_URL}/professor`);
+            const dados = await resposta.json();
+
+            const corpo = document.querySelector("#tabela-professor")
+            corpo.innerHTML = "";
+
+            for (let i =0; i < dados.length; i++) {
+                const professor = dados[i];
+            
+
+
+                corpo.insertAdjacentHTML("beforeend",
+                `<tr> 
+                    <td>${professor.cpf}</td> 
+                    <td>${professor.nome}</td> 
+                    <td>${professor.sobrenome}</td>
+                    <td>${professor.titulacao}</td> 
+                    <td>${professor.telefone}</td> 
+                    </tr>` ); 
+            }
+        }
+
+        async function carregar_Turma(){
+            const resposta = await fetch(`${API_URL}/turma`);
+            const dados = await resposta.json();
+ 
+            const corpo = document.querySelector("#tabela-turma")
+            corpo.innerHTML = "";
+ 
+            for (let i = 0; i < dados.length; i++) {
+                const turma = dados[i];
+ 
+                corpo.insertAdjacentHTML("beforeend",
+                `<tr>
+                    <td>${turma.numero_turma}</td>
+                    <td>${turma.codigo_turma}</td>
+                    <td>${turma.ano_letivo}</td>
+                    <td>${turma.turno}</td>
+                    <td>${turma.capacidade}</td>
+                    </tr>` );
+        }
+    }
+
+     async function carregar_matricula(){
+            const resposta = await fetch(`${API_URL}/matricula`);
+            const dados = await resposta.json();
+ 
+            const corpo = document.querySelector("#tabela-matricula")
+            corpo.innerHTML = "";
+ 
+            for (let i = 0; i < dados.length; i++) {
+                const matricula = dados[i];
+ 
+                corpo.insertAdjacentHTML("beforeend",
+                `<tr>
+                    <td>${matricula.n_matricula}</td>
+                    <td>${matricula.cpf}</td>
+                    <td>${matricula.numero_turma}</td>
+                    <td>${matricula.status_matricula}</td>
+                    <td>${matricula.forma_ingresso}</td>
+                    </tr>` );
+        }
+    }
+
+     async function carregar_disciplina(){
+            const resposta = await fetch(`${API_URL}/disciplina`);
+            const dados = await resposta.json();
+ 
+            const corpo = document.querySelector("#tabela-disciplina")
+            corpo.innerHTML = "";
+ 
+            for (let i = 0; i < dados.length; i++) {
+                const disciplina = dados[i];
+ 
+                corpo.insertAdjacentHTML("beforeend",
+                `<tr>
+                    <td>${disciplina.codigo_disciplina}</td>
+                    <td>${disciplina.nome_disciplina}</td>
+                    <td>${disciplina.codigo}</td>
+                    <td>${disciplina.carga_horaria}</td>
+                    <td>${disciplina.ementa}</td>
+                    </tr>` );
+        }
+    }
+        carregar_Aluno()
+        carregar_Turma()
+        carregar_Professor()
+        carregar_Grade()
+        carregar_Agendamento()
     </script>
 </body>
 </html>
