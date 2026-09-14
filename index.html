@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dados tabela</title>
     <style>
         table {border-collapse: collapse; margin-bottom: 30px;}
@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1> alunos </h1>
-    <table id="tabela-alunos">
+    <table id="tabela-aluno">
         <thead><tr>
             <th>cpf</th>
             <th>nome</th>
@@ -38,13 +38,13 @@
         <thead><tr>
             <th>turma</th>
             <th>turno</th>
-            <th>materias</th>
+            <th>materiais</th>
             <th>agenda</th>
             </tr></thead>
     </table>
 
     <h1> turmas </h1>
-    <table id="tabela-turmas">
+    <table id="tabela-turma">
         <thead><tr>
             <th>numero_turma</th>
             <th>codigo_turma</th>
@@ -54,12 +54,12 @@
             </tr></thead>
     </table>
 
-    <h1> alunos </h1>
+    <h1> grade </h1>
     <table id="tabela-grade">
         <thead><tr>
             <th>id_grade</th>
             <th>numero_turma</th>
-            <th>codigo_turma</th>
+            <th>codigo_disciplina</th>
             <th>cpf_professor</th>
             <th>dia_semana</th>
             <th>hora_inicio</th>
@@ -99,7 +99,9 @@
             const resposta = await fetch(`${API_URL}/alunos`);
             const dados = await resposta.json();
 
-            const corpo = document.querySelector("#tabela-alunos")
+            console.log(dados)
+
+            const corpo = document.querySelector("#tabela-aluno")
             corpo.innerHTML = "";
 
             for (let i =0; i < dados.length; i++) {
@@ -136,7 +138,7 @@
                     <td>${grade.id_grade}</td>
                     <td>${grade.numero_grade}</td> 
                     <td>${grade.codigo_disciplina}</td>
-                    <td>${grade.cpf_professor}}</td>
+                    <td>${grade.cpf_professor}</td>
                     <td>${grade.dia_semana}</td>
                     <td>${grade.hora_inicio}</td>
                     <td>${grade.hora_fim}</td>
@@ -257,6 +259,8 @@
         carregar_Professor()
         carregar_Grade()
         carregar_Agendamento()
+        carregar_matricula()
+        carregar_disciplina()
     </script>
 </body>
 </html>
